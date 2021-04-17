@@ -1,2 +1,2 @@
 # study
-repository for another study
+repository for author study
