@@ -11,6 +11,11 @@ void *tfn(void *arg)
 {
     int i = (int)arg;
     sleep(i);
+
+    if(i == 2){
+        pthread_exit(NULL);  //退出当前线程
+    }
+
     printf("this is %d thread pid = %d, tid = %lu\n",i+1,getpid(),pthread_self());
     return NULL;
 }
