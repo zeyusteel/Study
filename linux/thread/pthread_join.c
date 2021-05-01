@@ -48,5 +48,5 @@ int main(int argc, const char *argv[])
 
     printf("child thread exit with var = %d, str = %s\n",retval->var,retval->str);
     
-    pthread_exit(NULL);
+    pthread_exit(NULL);  //主线程退出其他线程不退出
 }
