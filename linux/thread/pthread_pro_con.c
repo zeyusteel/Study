@@ -51,7 +51,7 @@ void *consumerFun(void *arg)
     while(1){
         struct msg * pMsg = NULL;
         pthread_mutex_lock(&mutex);                     //加锁
-        if(head == NULL){                               //数据为空
+        while(head == NULL){                               //数据为空 这里不能用if 当有多个消费者时，没有拿到产品的消费者还需要继续wait
             pthread_cond_wait(&cond,&mutex);            //阻塞等待条件变量、解锁  被唤醒时再加锁mutex
         }
 
