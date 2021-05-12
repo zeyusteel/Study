@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <unistd.h>
-
+//fcntl： 设置文件属性 阻塞 非阻塞 追加
 int main(int argc, char *argv[])
 {
     int ret = 0;
