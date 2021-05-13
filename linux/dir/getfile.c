@@ -11,24 +11,26 @@ int getFileNum(char *path)
     struct dirent *ptr = NULL;
 
     dir = opendir(path);
+    
     if(dir == NULL){
-	perror("opendir");
-	return -1;
+	    perror("opendir");
+	    return -1;
     }
 
-    while((ptr = readdir(dir)) != NULL)
-    {
+    while((ptr = readdir(dir)) != NULL){
+
         if(strcmp(ptr->d_name,".") == 0 || strcmp(ptr->d_name,"..") == 0)
-	    continue;
-	if(ptr->d_type == DT_DIR)
-	{   
- 	    char newpath[128] = {0};
-   	    sprintf(newpath,"%s/%s",path,ptr->d_name);
+	        continue;
+
+        if(ptr->d_type == DT_DIR){   
+            char newpath[128] = {0};
+            sprintf(newpath,"%s/%s",path,ptr->d_name);
             printf("-------------------%s\n",newpath); 
- 	    getFileNum(newpath);
+            getFileNum(newpath);
         }
-	if(ptr->d_type == DT_REG)
-	    printf("%s\n",ptr->d_name);
+
+        if(ptr->d_type == DT_REG)
+            printf("%s\n",ptr->d_name);
     }
 
     closedir(dir);
