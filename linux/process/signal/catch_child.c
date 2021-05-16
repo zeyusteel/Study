@@ -10,7 +10,7 @@ void catch_child(int signo)//有子进程终止，发送sigchild信号，该函�
 	pid_t wpid;
 	int status;
 
-	while((wpid = waitpid(-1,&status,0)) != -1){//循环回收，防止僵尸进程 0 阻塞回收
+	while((wpid = waitpid(-1,&status,0)) != -1){//循环回收，防止僵尸进程 
 		if(WIFEXITED(status))
 			printf("catch child id %d,ret = %d\n",wpid,WEXITSTATUS(status));
 	}

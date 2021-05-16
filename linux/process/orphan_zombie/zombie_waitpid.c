@@ -28,10 +28,18 @@ int main(int argc, char *argv[])
 		printf(" %d child ,pid = %u,ppid = %u\n",i,getpid(),getppid());	
 	}
 	else{
-		sleep(i);
+		//sleep(i);
 	//	w_pid = waitpid(target_pid,&status,0);
 	//	printf("recover pid %d\n",w_pid);
-		while(waitpid(-1,&status,0)>0);
+		int iRet = 0;
+		//while((iRet = waitpid(-1,&status,WNOHANG))>=0); //WNOHANG 表示不阻塞
+	
+		while((iRet = waitpid(-1,&status,0))>0) //0 表示不使用参数
+		{
+			printf("%d\n",iRet );
+		}
+		if(iRet == -1)
+			perror("wait");
 		printf("i am parent,pid = %u\n",getpid());
 		while(1);
 	}

@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
 	}
 
 	ftruncate(fd,10);
+	//	p = (int *)mmap(NULL, 40, PROT_READ|PROT_WRITE, MAP_SHARED|MAP_ANONYMOUS, -1, 0);
 	p = (char *)mmap(NULL,10,PROT_READ|PROT_WRITE,MAP_SHARED,fd,0);
 	if(p == MAP_FAILED){
 		perror("mmap error");

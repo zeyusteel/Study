@@ -2,6 +2,12 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <stdlib.h>
+/*
+* Author:wangzeyu
+* Date: 2021-05-14
+*/
+
+//父进程先于子进终止，子进程沦为“孤儿进程”，会被 init 进程领养。
 
 int main(int argc,char *argv[])
 {

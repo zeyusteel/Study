@@ -8,7 +8,7 @@ void print_set(sigset_t *set)
 {
 	int i;
 	for(i=1; i<32; i++){
-		if(sigismember(set,i))
+		if(sigismember(set,i))//判断一个信号是否在集合中
 			putchar('1');
 		else
 			putchar('0');

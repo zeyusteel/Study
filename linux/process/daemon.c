@@ -28,6 +28,7 @@ int main(int argc, char *argv[])
 	
 	umask(0022);   //改变文件访问权限掩码
 
+	//已经失去终端控制，再操作 0 1 2 没有意义
 	close(STDIN_FILENO);//关闭stdin
 
 	fd = open("/dev/null",O_RDWR);//  /dev/null为新的0号描述符
