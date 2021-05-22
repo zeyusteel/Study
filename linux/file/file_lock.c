@@ -24,11 +24,11 @@ int main(int argc, char *argv[])
     if ((fd = open(argv[1], O_RDWR)) < 0)
         sys_err("open");
 
-    f_lock.l_type = F_WRLCK;        /*选用读琐*/
-    //f_lock.l_type = F_RDLCK;      /*选用写琐*/ 
+    f_lock.l_type = F_WRLCK;        /*选用写琐*/
+    //f_lock.l_type = F_RDLCK;      /*选用读琐*/ 
 
-    f_lock.l_whence = SEEK_SET;
-    f_lock.l_start = 0;
+    f_lock.l_whence = SEEK_SET;     //开始位置
+    f_lock.l_start = 0;             //偏移
     f_lock.l_len = 0;               /* 0表示整个文件加锁 */
 
     fcntl(fd, F_SETLKW, &f_lock);
