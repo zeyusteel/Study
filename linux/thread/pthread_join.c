@@ -30,19 +30,19 @@ int main(int argc, const char *argv[])
 {
     pthread_t tid;
     struct thrd arg;
-    struct thrd *retval;
+    struct thrd *retval = NULL;
 
     memset(arg.str,0,256);
     int ret = pthread_create(&tid,NULL,tfn,(void *)&arg);
     if(ret != 0){
-        perror("create thread error");
+        fprintf(stderr,"create thread error %s\n",strerror(ret));
         exit(1);
     }
 
     ret = pthread_join(tid,(void **)&retval);
 
     if(ret != 0){
-        perror("join error");
+        fprintf(stderr,"join error %s\n",strerror(ret));
         exit(1);
     }
 

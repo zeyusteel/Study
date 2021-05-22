@@ -7,6 +7,7 @@
 #include <pthread.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <string.h>
 
 void *tfn(void *arg)
 {
@@ -21,7 +22,7 @@ int main(int argc, const char *argv[])
 
     int ret = pthread_create(&tid,NULL,tfn,NULL);
     if(ret != 0){
-        perror("pthread error!");
+        fprintf(stderr,"pthread error , %s\n",strerror(ret));
         exit(1);
     }
     printf("thread: pid = %d, tid = %lu\n",getpid(),pthread_self());
