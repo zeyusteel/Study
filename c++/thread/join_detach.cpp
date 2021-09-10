@@ -29,13 +29,10 @@ void test(){
 int main()
 {
     test();
-    std::vector<std::thread *> threadList;
-    std::vector<std::string> vectest;
+    std::vector<std::thread> threadList;
 
     for(int i = 0; i < 10; i++){
-        std::thread *a = new std::thread(MyWorkThread()); 
-
-        threadList.push_back(a);
+        threadList.push_back(std::thread(MyWorkThread()));
     }
 
     std::for_each(threadList.begin(), threadList.end(), std::mem_fn(&std::thread::join));
